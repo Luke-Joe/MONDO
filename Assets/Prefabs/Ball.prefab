@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6776907423321008155}
   - component: {fileID: 4491882138513425891}
   - component: {fileID: -5890038902308226600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   rb: {fileID: 0}
+  bounces: 0

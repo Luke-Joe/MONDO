@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D rb;
     public Joystick joystick;
 
-    private Vector2 movement;
+    public Vector2 direction;
 
     // Start is called before the first frame update
     void Start() {
@@ -15,12 +15,12 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        movement.x = joystick.Horizontal;
-        movement.y = joystick.Vertical;
+        direction.x = joystick.Horizontal;
+        direction.y = joystick.Vertical;
         // movement.Normalize();
     }
 
     void FixedUpdate() {
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
     }
 }
