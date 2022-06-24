@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 1.0f) {
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
+            collision.gameObject.GetComponentInChildren<DamageController>().Flash();
         }
     }
 }
