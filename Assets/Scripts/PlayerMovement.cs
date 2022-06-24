@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         direction.x = joystick.Horizontal;
         direction.y = joystick.Vertical;
-        // movement.Normalize();
+        direction.Normalize();
     }
 
     void FixedUpdate() {
