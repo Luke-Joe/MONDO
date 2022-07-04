@@ -783,8 +783,8 @@ MonoBehaviour:
   health: {fileID: 926306138}
   hearts:
   - {fileID: 1810585190}
-  - {fileID: 477873074}
   - {fileID: 805438456}
+  - {fileID: 477873074}
   fullHeart: {fileID: -1140253950, guid: 43731b0e06697164fa76300ef531446c, type: 3}
   emptyHeart: {fileID: -852668646, guid: 43731b0e06697164fa76300ef531446c, type: 3}
 --- !u!1 &700669911
@@ -1160,8 +1160,8 @@ MonoBehaviour:
   health: {fileID: 1559342017}
   hearts:
   - {fileID: 733217334}
-  - {fileID: 1102427294}
   - {fileID: 647052421}
+  - {fileID: 1102427294}
   fullHeart: {fileID: -1140253950, guid: 43731b0e06697164fa76300ef531446c, type: 3}
   emptyHeart: {fileID: -852668646, guid: 43731b0e06697164fa76300ef531446c, type: 3}
 --- !u!1 &926306132
@@ -1200,8 +1200,10 @@ MonoBehaviour:
   firepoint: {fileID: 303715871}
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-  minPower: {x: 0, y: 0}
-  maxPower: {x: 0, y: 0}
+  pointPrefab: {fileID: 0}
+  points: []
+  numPoints: 0
+  power: 0
 --- !u!114 &926306134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,8 +1757,10 @@ MonoBehaviour:
   firepoint: {fileID: 1093080030}
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-  minPower: {x: 0, y: 0}
-  maxPower: {x: 0, y: 0}
+  pointPrefab: {fileID: 4840196931201044182, guid: cfab11f84227a48498ab45ff88f625b6, type: 3}
+  points: []
+  numPoints: 5
+  power: 0
 --- !u!114 &1559342017
 MonoBehaviour:
   m_ObjectHideFlags: 0

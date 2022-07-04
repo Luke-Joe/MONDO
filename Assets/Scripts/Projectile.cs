@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-    public float speed = 20f;
+    public float speed = 5f;
     public Rigidbody2D rb;
     public int bounces;
 
