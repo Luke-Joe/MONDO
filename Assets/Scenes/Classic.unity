@@ -703,7 +703,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
+  m_Color: {r: 0.62178713, g: 0.6271647, b: 0.6698113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -862,7 +862,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9433962, g: 0.10145953, b: 0.23337387, a: 1}
+  m_Color: {r: 0.94509804, g: 0.92209613, b: 0.10196078, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1200,6 +1200,7 @@ MonoBehaviour:
   firepoint: {fileID: 303715871}
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+  playerMovement: {fileID: 0}
   pointPrefab: {fileID: 0}
   points: []
   numPoints: 0
@@ -1318,7 +1319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559342012}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102427292
 GameObject:
@@ -1396,6 +1397,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102427292}
   m_CullTransparentMesh: 1
+--- !u!4 &1201319678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+  m_PrefabInstance: {fileID: 1830874750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1247134867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1684,6 +1690,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1201319678}
   - {fileID: 1929185603}
   - {fileID: 1093080030}
   m_Father: {fileID: 0}
@@ -1757,6 +1764,7 @@ MonoBehaviour:
   firepoint: {fileID: 1093080030}
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+  playerMovement: {fileID: 0}
   pointPrefab: {fileID: 4840196931201044182, guid: cfab11f84227a48498ab45ff88f625b6, type: 3}
   points: []
   numPoints: 5
@@ -1971,6 +1979,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810585188}
   m_CullTransparentMesh: 1
+--- !u!1001 &1830874750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1559342012}
+    m_Modifications:
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
+      propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
 --- !u!1 &1929185602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +2067,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559342012}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1929185604
 SpriteRenderer:
@@ -2046,7 +2111,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.7750127, g: 0.32808825, b: 0.9056604, a: 1}
+  m_Color: {r: 0.62721986, g: 0.32941172, b: 0.90588236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

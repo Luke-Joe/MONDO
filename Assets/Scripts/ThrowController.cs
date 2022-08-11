@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackState {
+public enum AttackState
+{
     empty,
     holding,
     charging,
     attack
 }
 
-public class ThrowController : MonoBehaviour {
+public class ThrowController : MonoBehaviour
+{
     public Transform firepoint;
     public Joystick joystick;
     public GameObject projectile;
+    public PlayerMovement playerMovement;
 
     public GameObject pointPrefab;
     public GameObject[] points;
@@ -27,46 +30,60 @@ public class ThrowController : MonoBehaviour {
     private float chargeSpeed = 10;
 
 
-    void Start() {
+    void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.holding;
 
         points = new GameObject[numPoints];
 
-        for (int i = 0; i < numPoints; i++) {
+        for (int i = 0; i < numPoints; i++)
+        {
             points[i] = Instantiate(pointPrefab, transform.position, Quaternion.identity);
         }
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         direction.x = -joystick.Horizontal;
         direction.y = -joystick.Vertical;
 
-        switch (state) {
+        switch (state)
+        {
             case AttackState.holding:
-                for (int i = 0; i < points.Length; i++) {
+                playerMovement.speed = 5f;
+                for (int i = 0; i < points.Length; i++)
+                {
                     points[i].SetActive(false);
                 }
-                if (Mathf.Abs(joystick.Horizontal) >= 0.2f || Mathf.Abs(joystick.Vertical) >= 0.2f) {
+                if (Mathf.Abs(joystick.Horizontal) >= 0.2f || Mathf.Abs(joystick.Vertical) >= 0.2f)
+                {
                     state = AttackState.charging;
                 }
                 break;
             case AttackState.charging:
                 // Scale speed/dmg
-                if (power < maxPower) {
+                playerMovement.speed = 2f;
+                if (power < maxPower)
+                {
                     power += Time.deltaTime * chargeSpeed;
                 }
-                if (joystick.Horizontal == 0 && joystick.Vertical == 0) {
+                if (joystick.Horizontal == 0 && joystick.Vertical == 0)
+                {
                     state = AttackState.attack;
                 }
-                for (int i = 0; i < points.Length; i++) {
+                for (int i = 0; i < points.Length; i++)
+                {
                     points[i].SetActive(true);
                     points[i].transform.position = TrajectoryPosition(i * 0.02f);
                 }
                 break;
             case AttackState.attack:
-                for (int i = 0; i < points.Length; i++) {
+                playerMovement.speed = 5f;
+                for (int i = 0; i < points.Length; i++)
+                {
                     points[i].SetActive(false);
                 }
                 Shoot();
@@ -75,17 +92,20 @@ public class ThrowController : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
-    void Shoot() {
+    void Shoot()
+    {
         GameObject newBullet = Instantiate(projectile, firepoint.position, firepoint.rotation) as GameObject;
         newBullet.GetComponent<Projectile>().speed += power;
         state = AttackState.holding;
     }
 
-    Vector2 TrajectoryPosition(float t) {
+    Vector2 TrajectoryPosition(float t)
+    {
         Vector2 currPointPos = (Vector2)firepoint.transform.position + (direction.normalized * power * t);
 
         return currPointPos;

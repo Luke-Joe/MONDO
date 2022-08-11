@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * speed;
         bounces = 0;
     }
 
@@ -23,5 +22,9 @@ public class Projectile : MonoBehaviour {
         } else {
             bounces++;
         }
+    }
+
+    void Throw() {
+        rb.velocity = transform.up * speed;
     }
 }
