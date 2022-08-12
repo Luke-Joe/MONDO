@@ -17,10 +17,6 @@ public class ThrowController : MonoBehaviour
     public GameObject projectile;
     public PlayerMovement playerMovement;
 
-    public GameObject pointPrefab;
-    public GameObject[] points;
-    public int numPoints;
-
     private Rigidbody2D rb;
     private AttackState state;
 
@@ -37,13 +33,6 @@ public class ThrowController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.ready;
-
-        points = new GameObject[numPoints];
-
-        for (int i = 0; i < numPoints; i++)
-        {
-            points[i] = Instantiate(pointPrefab, transform.position, Quaternion.identity);
-        }
     }
 
     // Update is called once per frame
@@ -66,10 +55,6 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.ready:
                 playerMovement.speed = 5f;
-                for (int i = 0; i < points.Length; i++)
-                {
-                    points[i].SetActive(false);
-                }
                 if (Mathf.Abs(joystick.Horizontal) >= 0.2f || Mathf.Abs(joystick.Vertical) >= 0.2f)
                 {
                     state = AttackState.charging;
@@ -86,18 +71,9 @@ public class ThrowController : MonoBehaviour
                 {
                     state = AttackState.active;
                 }
-                for (int i = 0; i < points.Length; i++)
-                {
-                    points[i].SetActive(true);
-                    points[i].transform.position = TrajectoryPosition(i * 0.02f);
-                }
                 break;
             case AttackState.active:
                 playerMovement.speed = 5f;
-                for (int i = 0; i < points.Length; i++)
-                {
-                    points[i].SetActive(false);
-                }
                 Shoot();
                 shootForce = 0;
                 currCooldown = cooldownTime;

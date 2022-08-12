@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &75657010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   pointPrefab: {fileID: 0}
   points: []
   numPoints: 0
-  power: 0
+  shootForce: 1
 --- !u!114 &926306134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   pointPrefab: {fileID: 4840196931201044182, guid: cfab11f84227a48498ab45ff88f625b6, type: 3}
   points: []
   numPoints: 5
-  power: 0
+  shootForce: 1
 --- !u!114 &1559342017
 MonoBehaviour:
   m_ObjectHideFlags: 0
