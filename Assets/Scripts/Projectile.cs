@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour
+{
     public float speed = 5f;
     public Rigidbody2D rb;
     public int bounces;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.up * speed;
         bounces = 0;
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
 
-        if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 0f && bounces == 0) {
+        if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 0f && bounces == 0)
+        {
             bounces++;
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
             collision.gameObject.GetComponentInChildren<DamageController>().Flash();
-        } else {
+        }
+        else
+        {
             bounces++;
         }
-    }
-
-    void Throw() {
-        rb.velocity = transform.up * speed;
     }
 }

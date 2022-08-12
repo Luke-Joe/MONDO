@@ -916,6 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1319,7 +1320,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559342012}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1102427292
 GameObject:
@@ -1397,11 +1398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102427292}
   m_CullTransparentMesh: 1
---- !u!4 &1201319678 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-  m_PrefabInstance: {fileID: 1830874750}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1247134867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1690,7 +1686,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1201319678}
   - {fileID: 1929185603}
   - {fileID: 1093080030}
   m_Father: {fileID: 0}
@@ -1979,63 +1974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810585188}
   m_CullTransparentMesh: 1
---- !u!1001 &1830874750
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1559342012}
-    m_Modifications:
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008152, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-      propertyPath: m_Name
-      value: Ball
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
 --- !u!1 &1929185602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2005,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559342012}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1929185604
 SpriteRenderer:

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum AttackState
 {
-    empty,
-    holding,
+    cooldown,
+    ready,
     charging,
-    attack
+    active
 }
 
 public class ThrowController : MonoBehaviour
@@ -25,16 +25,18 @@ public class ThrowController : MonoBehaviour
     private AttackState state;
 
     private Vector2 direction;
-    public float power = 1;
-    private float maxPower = 30;
+    public float shootForce = 1;
+    private float maxShootForce = 30;
     private float chargeSpeed = 10;
+    private float cooldownTime = 3;
+    private float currCooldown = 0;
 
 
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
-        state = AttackState.holding;
+        state = AttackState.ready;
 
         points = new GameObject[numPoints];
 
@@ -52,7 +54,17 @@ public class ThrowController : MonoBehaviour
 
         switch (state)
         {
-            case AttackState.holding:
+            case AttackState.cooldown:
+                if (currCooldown > 0)
+                {
+                    currCooldown -= Time.deltaTime;
+                }
+                else
+                {
+                    state = AttackState.ready;
+                }
+                break;
+            case AttackState.ready:
                 playerMovement.speed = 5f;
                 for (int i = 0; i < points.Length; i++)
                 {
@@ -66,13 +78,13 @@ public class ThrowController : MonoBehaviour
             case AttackState.charging:
                 // Scale speed/dmg
                 playerMovement.speed = 2f;
-                if (power < maxPower)
+                if (shootForce < maxShootForce)
                 {
-                    power += Time.deltaTime * chargeSpeed;
+                    shootForce += Time.deltaTime * chargeSpeed;
                 }
                 if (joystick.Horizontal == 0 && joystick.Vertical == 0)
                 {
-                    state = AttackState.attack;
+                    state = AttackState.active;
                 }
                 for (int i = 0; i < points.Length; i++)
                 {
@@ -80,14 +92,15 @@ public class ThrowController : MonoBehaviour
                     points[i].transform.position = TrajectoryPosition(i * 0.02f);
                 }
                 break;
-            case AttackState.attack:
+            case AttackState.active:
                 playerMovement.speed = 5f;
                 for (int i = 0; i < points.Length; i++)
                 {
                     points[i].SetActive(false);
                 }
                 Shoot();
-                power = 0;
+                shootForce = 0;
+                currCooldown = cooldownTime;
                 break;
         }
     }
@@ -99,14 +112,13 @@ public class ThrowController : MonoBehaviour
 
     void Shoot()
     {
-        GameObject newBullet = Instantiate(projectile, firepoint.position, firepoint.rotation) as GameObject;
-        newBullet.GetComponent<Projectile>().speed += power;
-        state = AttackState.holding;
+        Instantiate(projectile, firepoint.position, firepoint.rotation);
+        state = AttackState.cooldown;
     }
 
     Vector2 TrajectoryPosition(float t)
     {
-        Vector2 currPointPos = (Vector2)firepoint.transform.position + (direction.normalized * power * t);
+        Vector2 currPointPos = (Vector2)firepoint.transform.position + (direction.normalized * shootForce * t);
 
         return currPointPos;
     }
