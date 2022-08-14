@@ -67,6 +67,7 @@ public class ThrowController : MonoBehaviour
                 {
                     shootForce += Time.deltaTime * chargeSpeed;
                 }
+                //TODO: Ability to cancel attack
                 if (joystick.Horizontal == 0 && joystick.Vertical == 0)
                 {
                     state = AttackState.active;

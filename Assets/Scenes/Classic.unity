@@ -1202,9 +1202,6 @@ MonoBehaviour:
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
   playerMovement: {fileID: 0}
-  pointPrefab: {fileID: 0}
-  points: []
-  numPoints: 0
   shootForce: 1
 --- !u!114 &926306134
 MonoBehaviour:
@@ -1315,7 +1312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093080029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1760,9 +1757,6 @@ MonoBehaviour:
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
   playerMovement: {fileID: 0}
-  pointPrefab: {fileID: 4840196931201044182, guid: cfab11f84227a48498ab45ff88f625b6, type: 3}
-  points: []
-  numPoints: 5
   shootForce: 1
 --- !u!114 &1559342017
 MonoBehaviour:
