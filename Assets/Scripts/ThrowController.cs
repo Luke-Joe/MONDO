@@ -89,7 +89,8 @@ public class ThrowController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(projectile, firepoint.position, firepoint.rotation);
+        GameObject newBullet = Instantiate(projectile, firepoint.position, firepoint.rotation) as GameObject;
+        newBullet.GetComponent<Projectile>().speed += shootForce;
         state = AttackState.cooldown;
     }
 
