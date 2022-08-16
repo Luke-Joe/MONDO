@@ -21,6 +21,8 @@ public class Health : MonoBehaviour {
         hp -= amount;
         if (hp <= 0) {
             isDead = true;
+            FindObjectOfType<GameManager>().EndRound();
+
         }
     }
 }
