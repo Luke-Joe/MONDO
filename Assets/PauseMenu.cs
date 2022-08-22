@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject endMenuUI;
 
     public void OnPauseGame() {
         if (!GameManager.gameIsPaused) {
@@ -24,6 +25,18 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame() {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Classic");
+        if (GameManager.roundEnded) {
+            endMenuUI.SetActive(false);
+        }
+        GameManager.roundEnded = false;
+    }
+
+    public void EndGame() {
+        if (!GameManager.roundEnded) {
+            Time.timeScale = 0;
+            endMenuUI.SetActive(true);
+            GameManager.roundEnded = true;
+        }
     }
 
     void Pause() {
