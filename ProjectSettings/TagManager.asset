@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Projectile
+  - GameManagerTag
   layers:
   - Default
   - TransparentFX
