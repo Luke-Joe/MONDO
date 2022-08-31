@@ -20,11 +20,15 @@ public class ThrowController : MonoBehaviour
     private Rigidbody2D rb;
     private AttackState state;
 
+    public GameObject pointPrefab;
+    public GameObject[] points;
+    public int numPoints;
+
     private Vector2 direction;
     public float shootForce = 1;
     private float maxShootForce = 30;
     private float chargeSpeed = 10;
-    private float cooldownTime = 3;
+    public float cooldownTime = 1;
     private float currCooldown = 0;
 
 
@@ -33,6 +37,13 @@ public class ThrowController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.ready;
+
+        points = new GameObject[numPoints];
+
+        for (int i = 0; i < numPoints; i++)
+        {
+            points[i] = Instantiate(pointPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -55,6 +66,10 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.ready:
                 playerMovement.speed = 5f;
+                for (int i = 0; i < points.Length; i++)
+                {
+                    points[i].SetActive(false);
+                }
                 if (Mathf.Abs(joystick.Horizontal) >= 0.2f || Mathf.Abs(joystick.Vertical) >= 0.2f)
                 {
                     state = AttackState.charging;
@@ -63,6 +78,11 @@ public class ThrowController : MonoBehaviour
             case AttackState.charging:
                 // Scale speed/dmg
                 playerMovement.speed = 2f;
+                for (int i = 0; i < points.Length; i++)
+                {
+                    points[i].SetActive(true);
+                    points[i].transform.position = TrajectoryPosition(i * 0.02f);
+                }
                 if (shootForce < maxShootForce)
                 {
                     shootForce += Time.deltaTime * chargeSpeed;
@@ -75,8 +95,12 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.active:
                 playerMovement.speed = 5f;
+                for (int i = 0; i < points.Length; i++)
+                {
+                    points[i].SetActive(false);
+                }
                 Shoot();
-                shootForce = 0;
+                shootForce = 1;
                 currCooldown = cooldownTime;
                 break;
         }

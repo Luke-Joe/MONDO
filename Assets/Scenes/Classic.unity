@@ -2635,7 +2635,11 @@ MonoBehaviour:
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
   playerMovement: {fileID: 0}
+  pointPrefab: {fileID: 0}
+  points: []
+  numPoints: 0
   shootForce: 1
+  cooldownTime: 3
 --- !u!114 &926306134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3326,8 +3330,12 @@ MonoBehaviour:
   firepoint: {fileID: 1093080030}
   joystick: {fileID: 156893683}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 1559342014}
+  pointPrefab: {fileID: 4132511684359433582, guid: 7021d452bf6be7a44b6a1e0c1b259598, type: 3}
+  points: []
+  numPoints: 0
   shootForce: 1
+  cooldownTime: 1
 --- !u!114 &1559342017
 MonoBehaviour:
   m_ObjectHideFlags: 0

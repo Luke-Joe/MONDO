@@ -10,12 +10,12 @@ public class Health : MonoBehaviour
 
     private Rigidbody2D rb;
     private BoxCollider2D bc;
-    private PauseMenu gm;
+    private PauseMenu pm;
 
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameManagerTag").GetComponent<PauseMenu>();
+        pm = GameObject.FindGameObjectWithTag("GameManagerTag").GetComponent<PauseMenu>();
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         maxHP = hp;
@@ -27,7 +27,8 @@ public class Health : MonoBehaviour
         if (hp <= 0)
         {
             isDead = true;
-            gm.EndGame();
+            Destroy(gameObject);
+            pm.EndGame();
         }
     }
 }
