@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
             bounces++;
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
             collision.gameObject.GetComponentInChildren<DamageController>().Flash();
+            Destroy(gameObject);
         }
         else
         {
