@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject endMenuUI;
 
+    private static string p1ScoreKey = "PLAYER1_SCORE";
+    private static string p2ScoreKey = "PLAYER2_SCORE";
+
     public void OnPauseGame()
     {
         if (!gameIsPaused)
@@ -73,12 +76,28 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
     }
 
-    void Update()
+    public void Save()
     {
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
         Debug.Log("P1Score: " + p1Score);
         Debug.Log("PS2Score: " + p2Score);
+        PlayerPrefs.SetInt(p1ScoreKey, p1Score);
+        PlayerPrefs.SetInt(p2ScoreKey, p2Score);
+        PlayerPrefs.Save();
+    }
+
+    void Start()
+    {
+        if (PlayerPrefs.HasKey(p1ScoreKey))
+        {
+            p1Score = PlayerPrefs.GetInt(p1ScoreKey);
+        }
+
+        if (PlayerPrefs.HasKey(p2ScoreKey))
+        {
+            p2Score = PlayerPrefs.GetInt(p2ScoreKey);
+        }
     }
 
 }

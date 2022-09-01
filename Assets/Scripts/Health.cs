@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         {
             isDead = true;
             Destroy(gameObject);
-            gm.EndGame();
+
             if (gameObject.name == "Player 1")
             {
                 gm.p2Score++;
@@ -37,6 +37,8 @@ public class Health : MonoBehaviour
             {
                 gm.p1Score++;
             }
+            gm.Save();
+            gm.EndGame();
         }
     }
 }
