@@ -3033,7 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcd3b16370e7814cb966e6dc4f602ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 1
   maxHP: 3
   isDead: 0
 --- !u!1 &1022955405
