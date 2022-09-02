@@ -52,8 +52,12 @@ public class ThrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.x = moveJoystick.Horizontal;
-        direction.y = moveJoystick.Vertical;
+        if (moveJoystick.Horizontal != 0 || moveJoystick.Vertical != 0)
+        {
+            direction.x = moveJoystick.Horizontal;
+            direction.y = moveJoystick.Vertical;
+        }
+
 
         switch (state)
         {
@@ -82,6 +86,11 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.charging:
                 // Scale speed/dmg
+                if (throwJoystick.Horizontal != 0 || throwJoystick.Vertical != 0)
+                {
+                    direction.x = -throwJoystick.Horizontal;
+                    direction.y = -throwJoystick.Vertical;
+                }
                 playerMovement.speed = 2f;
                 animator.SetBool("Charging", true);
                 for (int i = 0; i < points.Length; i++)

@@ -8,9 +8,12 @@ public class Projectile : MonoBehaviour
     public Rigidbody2D rb;
     public int bounces;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
         bounces = 0;
@@ -29,6 +32,15 @@ public class Projectile : MonoBehaviour
         else
         {
             bounces++;
+            animator.SetBool("Spinning", false);
+        }
+    }
+
+    void Update()
+    {
+        if (rb.velocity.magnitude < 1.5f)
+        {
+            animator.SetBool("Spinning", false);
         }
     }
 }
