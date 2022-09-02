@@ -3474,17 +3474,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
   m_PrefabInstance: {fileID: 616018850}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &616018852 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
-  m_PrefabInstance: {fileID: 616018850}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &629612376
 GameObject:
   m_ObjectHideFlags: 0
@@ -4796,7 +4785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firepoint: {fileID: 303715871}
-  joystick: {fileID: 616018852}
+  throwJoystick: {fileID: 0}
+  moveJoystick: {fileID: 0}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
   playerMovement: {fileID: 926306134}
   pointPrefab: {fileID: 4132511684359433582, guid: 7021d452bf6be7a44b6a1e0c1b259598, type: 3}
@@ -5619,7 +5609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firepoint: {fileID: 1093080030}
-  joystick: {fileID: 156893683}
+  throwJoystick: {fileID: 156893683}
+  moveJoystick: {fileID: 1247134869}
   projectile: {fileID: 6776907423321008158, guid: 7401fc0f5637a2d4c90dae0700e31408, type: 3}
   playerMovement: {fileID: 1559342014}
   pointPrefab: {fileID: 4132511684359433582, guid: 7021d452bf6be7a44b6a1e0c1b259598, type: 3}
