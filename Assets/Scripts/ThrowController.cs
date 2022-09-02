@@ -13,7 +13,8 @@ public enum AttackState
 public class ThrowController : MonoBehaviour
 {
     public Transform firepoint;
-    public Joystick joystick;
+    public Joystick throwJoystick;
+    public Joystick moveJoystick;
     public GameObject projectile;
     public PlayerMovement playerMovement;
 
@@ -49,8 +50,8 @@ public class ThrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.x = -joystick.Horizontal;
-        direction.y = -joystick.Vertical;
+        direction.x = moveJoystick.Horizontal;
+        direction.y = moveJoystick.Vertical;
 
         switch (state)
         {
@@ -70,7 +71,7 @@ public class ThrowController : MonoBehaviour
                 {
                     points[i].SetActive(false);
                 }
-                if (Mathf.Abs(joystick.Horizontal) >= 0.2f || Mathf.Abs(joystick.Vertical) >= 0.2f)
+                if (Mathf.Abs(throwJoystick.Horizontal) >= 0.2f || Mathf.Abs(throwJoystick.Vertical) >= 0.2f)
                 {
                     state = AttackState.charging;
                 }
@@ -88,7 +89,7 @@ public class ThrowController : MonoBehaviour
                     shootForce += Time.deltaTime * chargeSpeed;
                 }
                 //TODO: Ability to cancel attack
-                if (joystick.Horizontal == 0 && joystick.Vertical == 0)
+                if (throwJoystick.Horizontal == 0 && throwJoystick.Vertical == 0)
                 {
                     state = AttackState.active;
                 }
