@@ -58,6 +58,7 @@ public class ThrowController : MonoBehaviour
         switch (state)
         {
             case AttackState.cooldown:
+                animator.SetBool("Throw", false);
                 if (currCooldown > 0)
                 {
                     currCooldown -= Time.deltaTime;
@@ -100,6 +101,7 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.active:
                 playerMovement.speed = 5f;
+                animator.SetBool("Throw", true);
                 animator.SetBool("Charging", false);
                 for (int i = 0; i < points.Length; i++)
                 {
