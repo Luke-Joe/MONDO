@@ -20,6 +20,7 @@ public class ThrowController : MonoBehaviour
 
     private Rigidbody2D rb;
     private AttackState state;
+    private Animator animator;
 
     public GameObject pointPrefab;
     public GameObject[] points;
@@ -38,6 +39,7 @@ public class ThrowController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.ready;
+        animator = GetComponentInChildren<Animator>();
 
         points = new GameObject[numPoints];
 
@@ -67,6 +69,7 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.ready:
                 playerMovement.speed = 5f;
+                animator.SetBool("Charging", false);
                 for (int i = 0; i < points.Length; i++)
                 {
                     points[i].SetActive(false);
@@ -79,6 +82,7 @@ public class ThrowController : MonoBehaviour
             case AttackState.charging:
                 // Scale speed/dmg
                 playerMovement.speed = 2f;
+                animator.SetBool("Charging", true);
                 for (int i = 0; i < points.Length; i++)
                 {
                     points[i].SetActive(true);
@@ -96,6 +100,7 @@ public class ThrowController : MonoBehaviour
                 break;
             case AttackState.active:
                 playerMovement.speed = 5f;
+                animator.SetBool("Charging", false);
                 for (int i = 0; i < points.Length; i++)
                 {
                     points[i].SetActive(false);
