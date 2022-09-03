@@ -99,6 +99,7 @@ public class ThrowController : MonoBehaviour
                 {
                     points[i].SetActive(true);
                     points[i].transform.position = TrajectoryPosition(i * 0.02f);
+                    points[i].transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
                 }
                 if (shootForce < maxShootForce)
                 {

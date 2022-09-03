@@ -9,12 +9,15 @@ public class Projectile : MonoBehaviour
     public int bounces;
 
     private Animator animator;
+    private SpriteRenderer sr;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         rb.velocity = transform.up * speed;
         bounces = 0;
     }
@@ -22,7 +25,7 @@ public class Projectile : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 0f && bounces == 0)
+        if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 0f && bounces == 0 && !isDead)
         {
             bounces++;
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
@@ -32,16 +35,25 @@ public class Projectile : MonoBehaviour
         else
         {
             bounces++;
+            isDead = true;
             animator.SetBool("Spinning", false);
+            if (Random.Range(1, 3) < 2)
+            {
+                sr.flipX = true;
+            }
         }
     }
 
     void Update()
     {
-        if (rb.velocity.magnitude < 1.5f)
+        if (rb.velocity.magnitude < 1.5f && !isDead)
         {
-            bounces++;
             animator.SetBool("Spinning", false);
+            isDead = true;
+            if (Random.Range(1, 3) < 2)
+            {
+                sr.flipX = true;
+            }
         }
     }
 }
