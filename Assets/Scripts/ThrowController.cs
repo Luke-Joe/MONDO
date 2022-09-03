@@ -32,6 +32,7 @@ public class ThrowController : MonoBehaviour
     private float chargeSpeed = 10;
     public float cooldownTime = 1;
     private float currCooldown = 0;
+    private Vector2 throwDirection;
 
 
     void Start()
@@ -73,7 +74,7 @@ public class ThrowController : MonoBehaviour
                 }
                 break;
             case AttackState.ready:
-                playerMovement.speed = 5f;
+                playerMovement.speed = 3f;
                 animator.SetBool("Charging", false);
                 for (int i = 0; i < points.Length; i++)
                 {
@@ -90,8 +91,9 @@ public class ThrowController : MonoBehaviour
                 {
                     direction.x = -throwJoystick.Horizontal;
                     direction.y = -throwJoystick.Vertical;
+                    throwDirection = direction;
                 }
-                playerMovement.speed = 2f;
+                playerMovement.speed = 1.5f;
                 animator.SetBool("Charging", true);
                 for (int i = 0; i < points.Length; i++)
                 {
@@ -105,11 +107,12 @@ public class ThrowController : MonoBehaviour
                 //TODO: Ability to cancel attack
                 if (throwJoystick.Horizontal == 0 && throwJoystick.Vertical == 0)
                 {
+                    direction = throwDirection;
                     state = AttackState.active;
                 }
                 break;
             case AttackState.active:
-                playerMovement.speed = 5f;
+                playerMovement.speed = 3f;
                 animator.SetBool("Throw", true);
                 animator.SetBool("Charging", false);
                 for (int i = 0; i < points.Length; i++)

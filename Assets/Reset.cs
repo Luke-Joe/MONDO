@@ -14,7 +14,7 @@ public class Reset : MonoBehaviour
 
         if (PlayerPrefs.HasKey("PLAYER2_SCORE"))
         {
-            PlayerPrefs.GetInt("PLAYER2_SCORE");
+            PlayerPrefs.DeleteKey("PLAYER2_SCORE");
         }
     }
 }

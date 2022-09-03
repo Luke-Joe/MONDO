@@ -80,8 +80,6 @@ public class GameManager : MonoBehaviour
     {
         p1ScoreText.text = p1Score.ToString();
         p2ScoreText.text = p2Score.ToString();
-        Debug.Log("P1Score: " + p1Score);
-        Debug.Log("PS2Score: " + p2Score);
         PlayerPrefs.SetInt(p1ScoreKey, p1Score);
         PlayerPrefs.SetInt(p2ScoreKey, p2Score);
         PlayerPrefs.Save();

@@ -61,7 +61,6 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("NO LONGER ON CD");
                     currState = AbilityState.ready;
                 }
                 break;

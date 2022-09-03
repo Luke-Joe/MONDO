@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
     {
         if (rb.velocity.magnitude < 1.5f)
         {
+            bounces++;
             animator.SetBool("Spinning", false);
         }
     }
