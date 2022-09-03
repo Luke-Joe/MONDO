@@ -13,6 +13,7 @@ public enum AttackState
 public class ThrowController : MonoBehaviour
 {
     public Transform firepoint;
+    public Transform trajectoryPoint;
     public Joystick throwJoystick;
     public Joystick moveJoystick;
     public GameObject projectile;
@@ -95,7 +96,7 @@ public class ThrowController : MonoBehaviour
                 }
                 playerMovement.speed = 1.5f;
                 animator.SetBool("Charging", true);
-                for (int i = 0; i < points.Length; i++)
+                for (int i = 1; i < points.Length; i++)
                 {
                     points[i].SetActive(true);
                     points[i].transform.position = TrajectoryPosition(i * 0.02f);
@@ -141,7 +142,7 @@ public class ThrowController : MonoBehaviour
 
     Vector2 TrajectoryPosition(float t)
     {
-        Vector2 currPointPos = (Vector2)firepoint.transform.position + (direction.normalized * shootForce * t);
+        Vector2 currPointPos = (Vector2)trajectoryPoint.transform.position + (1.25f * direction.normalized * shootForce * t);
 
         return currPointPos;
     }
