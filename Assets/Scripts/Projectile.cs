@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer sr;
+    private BoxCollider2D col;
     private bool isDead = false;
 
     // Start is called before the first frame update
@@ -37,9 +38,10 @@ public class Projectile : MonoBehaviour
             bounces++;
             isDead = true;
             animator.SetBool("Spinning", false);
+            gameObject.layer = LayerMask.NameToLayer("Noninteractive");
             if (Random.Range(1, 3) < 2)
             {
-                sr.flipX = true;
+                gameObject.transform.Rotate(new Vector3(0, 180, 0));
             }
         }
     }
@@ -50,9 +52,10 @@ public class Projectile : MonoBehaviour
         {
             animator.SetBool("Spinning", false);
             isDead = true;
+            gameObject.layer = LayerMask.NameToLayer("Noninteractive");
             if (Random.Range(1, 3) < 2)
             {
-                sr.flipX = true;
+                gameObject.transform.Rotate(new Vector3(0, 180, 0));
             }
         }
     }
