@@ -7,11 +7,14 @@ public class Projectile : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public int bounces;
+    public float fadeSpeed;
+    public float fadePause;
 
     private Animator animator;
     private SpriteRenderer sr;
     private BoxCollider2D col;
     private bool isDead = false;
+    private bool isFading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +63,34 @@ public class Projectile : MonoBehaviour
                 gameObject.transform.Rotate(new Vector3(0, 180, 0));
             }
         }
+
+        if (isDead)
+        {
+            isFading = true;
+            StartFading();
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        Color objectColor = sr.material.color;
+        float alphaValue = sr.material.color.a;
+
+        while (sr.material.color.a > 0f)
+        {
+            alphaValue -= Time.deltaTime / fadeSpeed;
+            sr.material.color = new Color(objectColor.r, objectColor.g, objectColor.b, alphaValue);
+            yield return new WaitForSeconds(fadePause);
+        }
+
+        sr.material.color = new Color(objectColor.r, objectColor.g, objectColor.b, 0);
+        Destroy(gameObject);
+    }
+
+    public void StartFading()
+    {
+        StartCoroutine("FadeOut");
     }
 }
