@@ -25,12 +25,14 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        DamageController dc = collision.gameObject.GetComponentInChildren<DamageController>();
 
         if (collision.gameObject.CompareTag("Player") && rb.velocity.magnitude > 0f && bounces == 0 && !isDead)
         {
             bounces++;
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
-            collision.gameObject.GetComponentInChildren<DamageController>().Flash();
+            dc.Flash();
+            dc.HitEffects();
             Destroy(gameObject);
         }
         else
@@ -59,4 +61,3 @@ public class Projectile : MonoBehaviour
             }
         }
     }
-}

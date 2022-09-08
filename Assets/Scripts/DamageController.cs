@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageController : MonoBehaviour {
+public class DamageController : MonoBehaviour
+{
     public Material flashMaterial;
     public float duration;
+    public ParticleSystem hitPS;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -12,22 +14,31 @@ public class DamageController : MonoBehaviour {
     private Color originalColor;
     private Coroutine flashRoutine;
 
-    void Start() {
+    void Start()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Flash() {
-        if (flashRoutine != null) {
+    public void Flash()
+    {
+        if (flashRoutine != null)
+        {
             StopCoroutine(flashRoutine);
         }
 
         flashRoutine = StartCoroutine(FlashRoutine());
     }
 
-    private IEnumerator FlashRoutine() {
+    public void HitEffects()
+    {
+        hitPS.Play();
+    }
+
+    private IEnumerator FlashRoutine()
+    {
         spriteRenderer.material = flashMaterial;
         spriteRenderer.color = Color.white; // TEMPORARY
         yield return new WaitForSeconds(duration);
@@ -35,5 +46,6 @@ public class DamageController : MonoBehaviour {
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
     }
+
 
 }
