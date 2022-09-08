@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        if (isDead)
+        if (isDead && isFading == false)
         {
             isFading = true;
             StartFading();
