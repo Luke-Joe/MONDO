@@ -8,9 +8,13 @@ public class AbilityHolder : MonoBehaviour
     public Ability ability;
     public Image abilityImage1;
     public KeyCode key;
+    public ParticleSystem flashPS;
+    public ParticleSystem flashPS2;
     private float cooldownTime;
     private float activeTime;
     private bool isActive = false;
+    private Vector3 preFlashPos;
+    private ThrowController tc;
 
     private enum AbilityState
     {
@@ -24,6 +28,7 @@ public class AbilityHolder : MonoBehaviour
     void Start()
     {
         abilityImage1.fillAmount = 0;
+        tc = GetComponent<ThrowController>();
     }
     // Update is called once per frame
     void Update()
@@ -31,12 +36,20 @@ public class AbilityHolder : MonoBehaviour
         switch (currState)
         {
             case AbilityState.ready:
-                if (isActive)
+                if (isActive && tc.isMoving)
                 {
+                    preFlashPos = transform.position;
+                    flashPS.transform.position = preFlashPos;
+                    flashPS.Play();
+                    flashPS2.Play();
                     ability.Activate(gameObject);
                     currState = AbilityState.active;
                     activeTime = ability.activeTime;
                     abilityImage1.fillAmount = 0;
+                }
+                else
+                {
+                    isActive = false;
                 }
                 break;
             case AbilityState.active:

@@ -34,6 +34,8 @@ public class ThrowController : MonoBehaviour
     public float cooldownTime = 1;
     private float currCooldown = 0;
     private Vector2 throwDirection;
+    public bool isMoving = false;
+    private bool initialInput = false;
 
 
     void Start()
@@ -56,8 +58,14 @@ public class ThrowController : MonoBehaviour
     {
         if (moveJoystick.Horizontal != 0 || moveJoystick.Vertical != 0)
         {
+            initialInput = true;
+            isMoving = true;
             direction.x = moveJoystick.Horizontal;
             direction.y = moveJoystick.Vertical;
+        }
+        else
+        {
+            isMoving = false;
         }
 
 
@@ -83,6 +91,7 @@ public class ThrowController : MonoBehaviour
                 }
                 if (Mathf.Abs(throwJoystick.Horizontal) >= 0.2f || Mathf.Abs(throwJoystick.Vertical) >= 0.2f)
                 {
+                    initialInput = true;
                     state = AttackState.charging;
                 }
                 break;
@@ -130,7 +139,10 @@ public class ThrowController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        if (initialInput)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        }
     }
 
     void Shoot()
