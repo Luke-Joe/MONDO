@@ -36,6 +36,7 @@ public class Projectile : MonoBehaviour
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
             dc.Flash();
             dc.HitEffects();
+            dc.CamShake();
             Destroy(gameObject);
         }
         else

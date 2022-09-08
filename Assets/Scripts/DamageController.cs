@@ -13,13 +13,20 @@ public class DamageController : MonoBehaviour
     private Material originalMaterial;
     private Color originalColor;
     private Coroutine flashRoutine;
+    private CameraShake cameraShake;
 
     void Start()
     {
+        GameObject camera = GameObject.Find("Main Camera");
+        cameraShake = camera.GetComponent<CameraShake>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void CamShake() {
+        StartCoroutine(cameraShake.Shake(0.1f, 0.1f));
     }
 
     public void Flash()
