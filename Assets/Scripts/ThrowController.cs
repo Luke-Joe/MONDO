@@ -34,8 +34,10 @@ public class ThrowController : MonoBehaviour
     public float cooldownTime = 1;
     private float currCooldown = 0;
     private Vector2 throwDirection;
+    private AudioManager audioManager;
     public bool isMoving = false;
     private bool initialInput = false;
+    private bool maxCharge = false;
 
 
     void Start()
@@ -44,7 +46,7 @@ public class ThrowController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.ready;
         animator = GetComponentInChildren<Animator>();
-
+        audioManager = FindObjectOfType<AudioManager>();
         points = new GameObject[numPoints];
 
         for (int i = 0; i < numPoints; i++)
@@ -115,6 +117,11 @@ public class ThrowController : MonoBehaviour
                 {
                     shootForce += Time.deltaTime * chargeSpeed;
                 }
+                if (shootForce >= maxShootForce && !maxCharge)
+                {
+                    audioManager.Play("MaxCharge");
+                    maxCharge = true;
+                }
                 //TODO: Ability to cancel attack
                 if (throwJoystick.Horizontal == 0 && throwJoystick.Vertical == 0)
                 {
@@ -123,6 +130,15 @@ public class ThrowController : MonoBehaviour
                 }
                 break;
             case AttackState.active:
+                if (maxCharge)
+                {
+                    audioManager.Play("ChargeThrow");
+                }
+                else
+                {
+                    audioManager.Play("RegularThrow");
+                }
+                maxCharge = false;
                 playerMovement.speed = 3f;
                 animator.SetBool("Throw", true);
                 animator.SetBool("Charging", false);

@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     private BoxCollider2D col;
     private bool isDead = false;
     private bool isFading = false;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class Projectile : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("CleaverShoot");
         rb.velocity = transform.up * speed;
         bounces = 0;
     }
@@ -34,6 +37,8 @@ public class Projectile : MonoBehaviour
         {
             bounces++;
             collision.gameObject.GetComponent<Health>().TakeDamage(1);
+            audioManager.StopPlaying("CleaverShoot");
+            audioManager.Play("HitSound");
             dc.Flash();
             dc.HitEffects();
             dc.CamShake();
@@ -42,6 +47,8 @@ public class Projectile : MonoBehaviour
         else
         {
             bounces++;
+            audioManager.StopPlaying("CleaverShoot");
+            audioManager.Play("HitOther");
             isDead = true;
             animator.SetBool("Spinning", false);
             gameObject.layer = LayerMask.NameToLayer("Noninteractive");
@@ -56,6 +63,8 @@ public class Projectile : MonoBehaviour
     {
         if (rb.velocity.magnitude < 1.5f && !isDead)
         {
+            audioManager.StopPlaying("CleaverShoot");
+            audioManager.Play("CleaverFall");
             animator.SetBool("Spinning", false);
             isDead = true;
             gameObject.layer = LayerMask.NameToLayer("Noninteractive");

@@ -14,18 +14,21 @@ public class DamageController : MonoBehaviour
     private Color originalColor;
     private Coroutine flashRoutine;
     private CameraShake cameraShake;
+    private AudioManager audioManager;
 
     void Start()
     {
         GameObject camera = GameObject.Find("Main Camera");
         cameraShake = camera.GetComponent<CameraShake>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioManager = FindObjectOfType<AudioManager>();
         originalMaterial = spriteRenderer.material;
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void CamShake() {
+    public void CamShake()
+    {
         StartCoroutine(cameraShake.Shake(0.1f, 0.1f));
     }
 
@@ -52,6 +55,16 @@ public class DamageController : MonoBehaviour
         spriteRenderer.color = originalColor;
         spriteRenderer.material = originalMaterial;
         flashRoutine = null;
+    }
+
+    public void Step()
+    {
+        audioManager.Play("Step");
+    }
+
+    public void Step2()
+    {
+        audioManager.Play("Step2");
     }
 
 

@@ -15,6 +15,7 @@ public class AbilityHolder : MonoBehaviour
     private bool isActive = false;
     private Vector3 preFlashPos;
     private ThrowController tc;
+    private AudioManager audioManager;
 
     private enum AbilityState
     {
@@ -28,6 +29,7 @@ public class AbilityHolder : MonoBehaviour
     void Start()
     {
         abilityImage1.fillAmount = 0;
+        audioManager = FindObjectOfType<AudioManager>();
         tc = GetComponent<ThrowController>();
     }
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class AbilityHolder : MonoBehaviour
                     flashPS.Play();
                     flashPS2.Play();
                     ability.Activate(gameObject);
+                    audioManager.Play("Flash");
                     currState = AbilityState.active;
                     activeTime = ability.activeTime;
                     abilityImage1.fillAmount = 0;
