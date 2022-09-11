@@ -38,6 +38,7 @@ public class ThrowController : MonoBehaviour
     public bool isMoving = false;
     private bool initialInput = false;
     private bool maxCharge = false;
+    private bool initCharge = false;
 
 
     void Start()
@@ -105,6 +106,12 @@ public class ThrowController : MonoBehaviour
                     direction.y = -throwJoystick.Vertical;
                     throwDirection = direction;
                 }
+
+                if (!initCharge)
+                {
+                    initCharge = true;
+                    audioManager.Play("Charging");
+                }
                 playerMovement.speed = 1.5f;
                 animator.SetBool("Charging", true);
                 for (int i = 1; i < points.Length; i++)
@@ -127,6 +134,8 @@ public class ThrowController : MonoBehaviour
                 {
                     direction = throwDirection;
                     state = AttackState.active;
+                    audioManager.StopPlaying("Charging");
+                    initCharge = false;
                 }
                 break;
             case AttackState.active:
@@ -138,6 +147,7 @@ public class ThrowController : MonoBehaviour
                 {
                     audioManager.Play("RegularThrow");
                 }
+
                 maxCharge = false;
                 playerMovement.speed = 3f;
                 animator.SetBool("Throw", true);

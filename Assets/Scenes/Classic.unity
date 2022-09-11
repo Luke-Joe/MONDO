@@ -8817,22 +8817,22 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CleaverShoot
     clip: {fileID: 8300000, guid: 25a065bb340ca194ab2dbc4321576ae0, type: 3}
-    volume: 0.25
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}
   - name: CleaverFall
     clip: {fileID: 8300000, guid: b83dad0ad110e614fa8a99c60db24dbd, type: 3}
-    volume: 0.5
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
   - name: ChargeThrow
     clip: {fileID: 8300000, guid: 8bb7946032d970e4dbe4e85cc2805560, type: 3}
-    volume: 0.75
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
   - name: RegularThrow
     clip: {fileID: 8300000, guid: f9ea03f4b54fc2b4a83848bd093aba7a, type: 3}
-    volume: 0.75
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
   - name: Step
@@ -8844,6 +8844,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6dd2cac9764d8404899fe1bf4e6edc81, type: 3}
     volume: 0.5
     pitch: 1
+    source: {fileID: 0}
+  - name: Charging
+    clip: {fileID: 8300000, guid: 0466783b042be4148b4493aa0fc32401, type: 3}
+    volume: 0.25
+    pitch: 0.75
     source: {fileID: 0}
 --- !u!4 &669276943
 Transform:
@@ -8936,7 +8941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134, y: 30}
+  m_AnchoredPosition: {x: 0, y: 410}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695349324
@@ -9939,7 +9944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -151, y: -30}
+  m_AnchoredPosition: {x: 0, y: -410}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &887492240
