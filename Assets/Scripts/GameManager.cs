@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Resume();
-            // Ball still spawnable on pause -> Change how game is paused
         }
     }
 

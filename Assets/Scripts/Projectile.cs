@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
     private bool isDead = false;
     private bool isFading = false;
     private AudioManager audioManager;
+    private ParticleSystem cleaverCollidePS;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         audioManager = FindObjectOfType<AudioManager>();
+        cleaverCollidePS = GameObject.Find("CleaverCollidePS").GetComponent<ParticleSystem>();
         audioManager.Play("CleaverShoot");
         rb.velocity = transform.up * speed;
         bounces = 0;
@@ -49,6 +51,11 @@ public class Projectile : MonoBehaviour
             bounces++;
             audioManager.StopPlaying("CleaverShoot");
             audioManager.Play("HitOther");
+            if (!isDead && collision.gameObject.CompareTag("Projectile"))
+            {
+                cleaverCollidePS.transform.position = collision.gameObject.transform.position;
+                cleaverCollidePS.Play();
+            }
             isDead = true;
             animator.SetBool("Spinning", false);
             gameObject.layer = LayerMask.NameToLayer("Noninteractive");
