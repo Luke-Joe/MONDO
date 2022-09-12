@@ -2376,7 +2376,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -8833,7 +8833,7 @@ MonoBehaviour:
   - name: RegularThrow
     clip: {fileID: 8300000, guid: f9ea03f4b54fc2b4a83848bd093aba7a, type: 3}
     volume: 0.5
-    pitch: 1
+    pitch: 0.75
     source: {fileID: 0}
   - name: Step
     clip: {fileID: 8300000, guid: c96e22cddfd1a2f4599597ba2cf9213e, type: 3}
@@ -10102,7 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcd3b16370e7814cb966e6dc4f602ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 1
   maxHP: 3
   isDead: 0
 --- !u!114 &926306139
@@ -11001,7 +11001,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

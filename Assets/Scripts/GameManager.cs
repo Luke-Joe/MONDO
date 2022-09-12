@@ -54,12 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        // if (!roundEnded)
-        // {
-        //     Time.timeScale = 0;
-        //     endMenuUI.SetActive(true);
-        //     roundEnded = true;
-        // }
+        StartCoroutine("EndGameCoroutine");
     }
 
     void Pause()
@@ -98,4 +93,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator EndGameCoroutine()
+    {
+        yield return new WaitForSeconds(0.6f);
+
+        if (!roundEnded)
+        {
+            Time.timeScale = 0;
+            endMenuUI.SetActive(true);
+            roundEnded = true;
+        }
+    }
 }
