@@ -141,6 +141,7 @@ public class ThrowController : MonoBehaviour
             case AttackState.active:
                 if (maxCharge)
                 {
+                    shootForce = 40;
                     audioManager.Play("ChargeThrow");
                 }
                 else
