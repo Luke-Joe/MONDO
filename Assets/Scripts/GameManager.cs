@@ -13,12 +13,18 @@ public class GameManager : MonoBehaviour
     public int p2Score = 0;
     public TMP_Text p1ScoreText;
     public TMP_Text p2ScoreText;
+    public TMP_Text countdownTimer;
 
     public GameObject pauseMenuUI;
     public GameObject endMenuUI;
+    public GameObject countdownUI;
 
     private static string p1ScoreKey = "PLAYER1_SCORE";
     private static string p2ScoreKey = "PLAYER2_SCORE";
+
+
+    private float startingTime = 3.5f;
+    private float currTime = 0f;
 
     public void OnPauseGame()
     {
@@ -81,6 +87,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        currTime = startingTime;
+
         if (PlayerPrefs.HasKey(p1ScoreKey))
         {
             p1Score = PlayerPrefs.GetInt(p1ScoreKey);
@@ -89,6 +97,18 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey(p2ScoreKey))
         {
             p2Score = PlayerPrefs.GetInt(p2ScoreKey);
+        }
+    }
+
+    void Update()
+    {
+        currTime -= Time.deltaTime;
+        countdownTimer.text = currTime.ToString("0");
+
+        if (currTime < 0.1)
+        {
+            currTime = 0;
+            countdownUI.SetActive(false);
         }
     }
 
