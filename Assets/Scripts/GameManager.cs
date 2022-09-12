@@ -54,12 +54,12 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        if (!roundEnded)
-        {
-            Time.timeScale = 0;
-            endMenuUI.SetActive(true);
-            roundEnded = true;
-        }
+        // if (!roundEnded)
+        // {
+        //     Time.timeScale = 0;
+        //     endMenuUI.SetActive(true);
+        //     roundEnded = true;
+        // }
     }
 
     void Pause()

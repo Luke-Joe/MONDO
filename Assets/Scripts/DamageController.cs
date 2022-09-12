@@ -67,5 +67,10 @@ public class DamageController : MonoBehaviour
         audioManager.Play("Step2");
     }
 
+    public void DeathFall()
+    {
+        audioManager.Play("DeathFall");
+    }
+
 
 }

@@ -8850,6 +8850,11 @@ MonoBehaviour:
     volume: 0.25
     pitch: 0.75
     source: {fileID: 0}
+  - name: DeathFall
+    clip: {fileID: 8300000, guid: ecada3cbe5b2959429a0795d5eb89e1e, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &669276943
 Transform:
   m_ObjectHideFlags: 0
