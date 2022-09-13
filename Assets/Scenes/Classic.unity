@@ -8872,6 +8872,16 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - name: countdownSFX
+    clip: {fileID: 8300000, guid: dbb0683d92965ac48964900eaf3c74eb, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: countdownSFXFinal
+    clip: {fileID: 8300000, guid: 60a06937993b95a4d997b8cf9ad4cb4e, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &669276943
 Transform:
   m_ObjectHideFlags: 0

@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
     private static string p1ScoreKey = "PLAYER1_SCORE";
     private static string p2ScoreKey = "PLAYER2_SCORE";
 
-
     private float startingTime = 3.5f;
     private float currTime = 0f;
+    private bool countdownSFXPlayed = false;
 
     public void OnPauseGame()
     {
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
             endMenuUI.SetActive(false);
         }
         roundEnded = false;
+        gameIsPaused = false;
     }
 
     public void EndGame()
@@ -121,10 +122,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         currTime -= Time.deltaTime;
+        string prev = countdownTimer.text;
         countdownTimer.text = currTime.ToString("0");
 
-        if (currTime < 0.25)
+        if (prev != countdownTimer.text && currTime > 0.5)
         {
+            audioManager.Play("countdownSFX");
+        }
+
+        if (currTime < 0.5 && !countdownSFXPlayed)
+        {
+            audioManager.Play("countdownSFXFinal");
+            countdownSFXPlayed = true;
             currTime = 0;
             countdownUI.SetActive(false);
         }
