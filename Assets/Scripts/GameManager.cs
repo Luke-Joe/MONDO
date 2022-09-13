@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject endMenuUI;
     public GameObject countdownUI;
+    private AudioManager audioManager;
 
     private static string p1ScoreKey = "PLAYER1_SCORE";
     private static string p2ScoreKey = "PLAYER2_SCORE";
@@ -40,7 +41,14 @@ public class GameManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        StartCoroutine("LoadMenuCoroutine");
+    }
+
+    IEnumerator LoadMenuCoroutine()
+    {
+        audioManager.Play("UIBlip");
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
         SceneManager.LoadScene("Menu");
         roundEnded = false;
         gameIsPaused = false;
@@ -48,7 +56,14 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        StartCoroutine("RestartGameCoroutine");
+    }
+
+    IEnumerator RestartGameCoroutine()
+    {
+        audioManager.Play("UIBlip");
         Time.timeScale = 1f;
+        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
         SceneManager.LoadScene("Classic");
         if (roundEnded)
         {
@@ -64,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     void Pause()
     {
+        audioManager.Play("UIBlip");
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         gameIsPaused = true;
@@ -71,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     void Resume()
     {
+        audioManager.Play("UIBlip");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
@@ -87,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         currTime = startingTime;
 
         if (PlayerPrefs.HasKey(p1ScoreKey))
@@ -105,7 +123,7 @@ public class GameManager : MonoBehaviour
         currTime -= Time.deltaTime;
         countdownTimer.text = currTime.ToString("0");
 
-        if (currTime < 0.1)
+        if (currTime < 0.25)
         {
             currTime = 0;
             countdownUI.SetActive(false);

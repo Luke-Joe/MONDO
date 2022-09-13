@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Flash Ability
   m_EditorClassIdentifier: 
   abilityName: Flash
-  cooldownTime: 1
+  cooldownTime: 10
   activeTime: 0
   dashForce: 5000

@@ -8537,7 +8537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190, y: 460}
+  m_AnchoredPosition: {x: -213, y: 460}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629612379
@@ -8859,6 +8859,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: DeathFall
     clip: {fileID: 8300000, guid: ecada3cbe5b2959429a0795d5eb89e1e, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: UIBlip
+    clip: {fileID: 8300000, guid: c49682dc0dec2ad459d5364d575987ad, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: UICancel
+    clip: {fileID: 8300000, guid: 34416b96c8642ad45b908242ddaf08bb, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
@@ -10093,7 +10103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcd3b16370e7814cb966e6dc4f602ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 3
   maxHP: 3
   isDead: 0
 --- !u!114 &926306139
@@ -20528,7 +20538,7 @@ MonoBehaviour:
   p1ScoreText: {fileID: 390207331}
   p2ScoreText: {fileID: 1062167762}
   countdownTimer: {fileID: 767724215}
-  pauseMenuUI: {fileID: 767724213}
+  pauseMenuUI: {fileID: 2129544471}
   endMenuUI: {fileID: 1022955405}
   countdownUI: {fileID: 2078559444}
 --- !u!4 &1489446671
