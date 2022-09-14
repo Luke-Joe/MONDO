@@ -124,7 +124,7 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 1722143904673349035}
   bounces: 0
-  fadeSpeed: 0.25
+  fadeSpeed: 0.05
   fadePause: 0.1
 --- !u!95 &5289780696600392813
 Animator:
