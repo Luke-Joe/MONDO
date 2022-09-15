@@ -47,17 +47,6 @@ public class DamageController : MonoBehaviour
         hitPS.Play();
     }
 
-    private IEnumerator FlashRoutine()
-    {
-        originalMaterial = spriteRenderer.material;
-        spriteRenderer.material = flashMaterial;
-        spriteRenderer.color = Color.white; // TEMPORARY
-        yield return new WaitForSeconds(duration);
-        spriteRenderer.color = originalColor;
-        spriteRenderer.material = originalMaterial;
-        flashRoutine = null;
-    }
-
     public void Step()
     {
         audioManager.Play("Step");
@@ -73,5 +62,14 @@ public class DamageController : MonoBehaviour
         audioManager.Play("DeathFall");
     }
 
-
+    private IEnumerator FlashRoutine()
+    {
+        originalMaterial = spriteRenderer.material;
+        spriteRenderer.material = flashMaterial;
+        spriteRenderer.color = Color.white; // TEMPORARY
+        yield return new WaitForSeconds(duration);
+        spriteRenderer.color = originalColor;
+        spriteRenderer.material = originalMaterial;
+        flashRoutine = null;
+    }
 }

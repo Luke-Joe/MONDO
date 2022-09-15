@@ -17,8 +17,16 @@ public class CharacterManager : MonoBehaviour
     public int index = 0;
     public bool PlayerReady = false;
 
+    private AudioManager audioManager;
+
+    void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
     public void NextOption()
     {
+        audioManager.Play("UIBlip");
         index++;
 
         if (index > characterDB.characterCount() - 1)
@@ -31,6 +39,7 @@ public class CharacterManager : MonoBehaviour
 
     public void PrevOption()
     {
+        audioManager.Play("UIBlip");
         index--;
 
         if (index < 0)
@@ -52,6 +61,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (!PlayerReady)
         {
+            audioManager.Play("UIBlip");
             SetupStatus1.text = "CANCEL";
             PlayerReady = true;
             NextButton1.gameObject.SetActive(false);
@@ -59,6 +69,7 @@ public class CharacterManager : MonoBehaviour
         }
         else
         {
+            audioManager.Play("UICancel");
             PlayerReady = false;
             SetupStatus1.text = "READY";
             NextButton1.gameObject.SetActive(true);

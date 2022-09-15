@@ -33,83 +33,6 @@ public class GameManager : MonoBehaviour
     private float currTime = 0f;
     private bool countdownSFXPlayed = false;
 
-    public void OnPauseGame()
-    {
-        if (!gameIsPaused)
-        {
-            Pause();
-        }
-        else
-        {
-            Resume();
-        }
-    }
-
-    public void LoadMenu()
-    {
-        StartCoroutine("LoadMenuCoroutine");
-    }
-
-    IEnumerator LoadMenuCoroutine()
-    {
-        audioManager.Play("UIBlip");
-        Time.timeScale = 1f;
-        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
-        SceneManager.LoadScene("Menu");
-        roundEnded = false;
-        gameIsPaused = false;
-    }
-
-    public void RestartGame()
-    {
-        StartCoroutine("RestartGameCoroutine");
-    }
-
-    IEnumerator RestartGameCoroutine()
-    {
-        audioManager.Play("UIBlip");
-        Time.timeScale = 1f;
-        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
-        SceneManager.LoadScene("Classic");
-        if (roundEnded)
-        {
-            endMenuUI.SetActive(false);
-        }
-        roundEnded = false;
-        gameIsPaused = false;
-    }
-
-    public void EndGame()
-    {
-        StartCoroutine("EndGameCoroutine");
-    }
-
-    void Pause()
-    {
-        audioManager.Play("UIBlip");
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0;
-        gameIsPaused = true;
-    }
-
-    void Resume()
-    {
-        audioManager.Play("UIBlip");
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        gameIsPaused = false;
-    }
-
-    public void Save()
-    {
-        p1ScoreText.text = p1Score.ToString();
-        p2ScoreText.text = p2Score.ToString();
-        PlayerPrefs.SetInt(p1ScoreKey, p1Score);
-        PlayerPrefs.SetInt(p2ScoreKey, p2Score);
-        PlayerPrefs.SetInt(setupKey, 1);
-        PlayerPrefs.Save();
-    }
-
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -163,6 +86,73 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnPauseGame()
+    {
+        if (!gameIsPaused)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
+    }
+
+    public void LoadMenu()
+    {
+        StartCoroutine("LoadMenuCoroutine");
+    }
+
+    public void RestartGame()
+    {
+        StartCoroutine("RestartGameCoroutine");
+    }
+
+    public void EndGame()
+    {
+        StartCoroutine("EndGameCoroutine");
+    }
+
+    void Pause()
+    {
+        audioManager.Play("UIBlip");
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0;
+        gameIsPaused = true;
+    }
+
+    void Resume()
+    {
+        audioManager.Play("UIBlip");
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    public void Save()
+    {
+        p1ScoreText.text = p1Score.ToString();
+        p2ScoreText.text = p2Score.ToString();
+        PlayerPrefs.SetInt(p1ScoreKey, p1Score);
+        PlayerPrefs.SetInt(p2ScoreKey, p2Score);
+        PlayerPrefs.SetInt(setupKey, 1);
+        PlayerPrefs.Save();
+    }
+
+    IEnumerator RestartGameCoroutine()
+    {
+        audioManager.Play("UIBlip");
+        Time.timeScale = 1f;
+        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
+        SceneManager.LoadScene("Classic");
+        if (roundEnded)
+        {
+            endMenuUI.SetActive(false);
+        }
+        roundEnded = false;
+        gameIsPaused = false;
+    }
+
     public IEnumerator EndGameCoroutine()
     {
         yield return new WaitForSeconds(0.6f);
@@ -173,5 +163,15 @@ public class GameManager : MonoBehaviour
             endMenuUI.SetActive(true);
             roundEnded = true;
         }
+    }
+
+    IEnumerator LoadMenuCoroutine()
+    {
+        audioManager.Play("UIBlip");
+        Time.timeScale = 1f;
+        yield return new WaitForSeconds(audioManager.FindDuration("UIBlip"));
+        SceneManager.LoadScene("Menu");
+        roundEnded = false;
+        gameIsPaused = false;
     }
 }
