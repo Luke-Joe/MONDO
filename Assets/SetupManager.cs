@@ -16,13 +16,21 @@ public class SetupManager : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+
+        if (PlayerPrefs.HasKey("P1_SELECTION") && PlayerPrefs.HasKey("P2_SELECTION"))
+        {
+            player1.UpdateCharacter(PlayerPrefs.GetInt("P1_SELECTION"));
+            player2.UpdateCharacter(PlayerPrefs.GetInt("P2_SELECTION"));
+        }
     }
 
     void Update()
     {
         if (player1.PlayerReady && player2.PlayerReady)
         {
-            gm.setupComplete = true;
+            PlayerPrefs.SetInt("SETUP_COMPLETE", 1);
+            PlayerPrefs.SetInt("P1_SELECTION", player1.index);
+            PlayerPrefs.SetInt("P2_SELECTION", player2.index);
             setupUI.SetActive(false);
             countdownUI.SetActive(true);
         }

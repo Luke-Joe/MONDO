@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject endMenuUI;
     public GameObject countdownUI;
+    public GameObject setupUI;
     private AudioManager audioManager;
 
     private static string p1ScoreKey = "PLAYER1_SCORE";
     private static string p2ScoreKey = "PLAYER2_SCORE";
+    private static string setupKey = "SETUP_COMPLETE";
 
     private float startingTime = 3.5f;
     private float currTime = 0f;
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
         p2ScoreText.text = p2Score.ToString();
         PlayerPrefs.SetInt(p1ScoreKey, p1Score);
         PlayerPrefs.SetInt(p2ScoreKey, p2Score);
+        PlayerPrefs.SetInt(setupKey, 1);
         PlayerPrefs.Save();
     }
 
@@ -118,11 +121,21 @@ public class GameManager : MonoBehaviour
         {
             p2Score = PlayerPrefs.GetInt(p2ScoreKey);
         }
+
+        if (PlayerPrefs.GetInt(setupKey) != 0)
+        {
+            countdownUI.SetActive(true);
+
+        }
+        else
+        {
+            setupUI.SetActive(true);
+        }
     }
 
     void Update()
     {
-        if (setupComplete)
+        if (PlayerPrefs.GetInt(setupKey) != 0)
         {
             currTime -= Time.deltaTime;
             string prev = countdownTimer.text;

@@ -9021,7 +9021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &666210963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21429,6 +21429,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 2129544471}
   endMenuUI: {fileID: 1022955405}
   countdownUI: {fileID: 2078559444}
+  setupUI: {fileID: 666210962}
 --- !u!4 &1489446671
 Transform:
   m_ObjectHideFlags: 0

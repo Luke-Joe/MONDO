@@ -16,5 +16,11 @@ public class Reset : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("PLAYER2_SCORE");
         }
+
+        PlayerPrefs.SetInt("SETUP_COMPLETE", 0);
+        PlayerPrefs.DeleteKey("P1_SELECTION");
+        PlayerPrefs.DeleteKey("P2_SELECTION");
+
+
     }
 }

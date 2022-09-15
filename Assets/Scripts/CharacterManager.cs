@@ -14,14 +14,8 @@ public class CharacterManager : MonoBehaviour
     public Button NextButton1;
     public Button PrevButton1;
 
-    private int index = 0;
+    public int index = 0;
     public bool PlayerReady = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public void NextOption()
     {
@@ -47,7 +41,7 @@ public class CharacterManager : MonoBehaviour
         UpdateCharacter(index);
     }
 
-    private void UpdateCharacter(int index)
+    public void UpdateCharacter(int index)
     {
         Character character = characterDB.GetCharacter(index);
         charViewer.material = character.characterMaterial;
