@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static bool roundEnded = false;
     public static bool gameIsPaused = false;
+    public bool setupComplete = false;
     public int p1Score = 0;
     public int p2Score = 0;
     public TMP_Text p1ScoreText;
@@ -121,21 +122,24 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        currTime -= Time.deltaTime;
-        string prev = countdownTimer.text;
-        countdownTimer.text = currTime.ToString("0");
-
-        if (prev != countdownTimer.text && currTime > 0.5)
+        if (setupComplete)
         {
-            audioManager.Play("countdownSFX");
-        }
+            currTime -= Time.deltaTime;
+            string prev = countdownTimer.text;
+            countdownTimer.text = currTime.ToString("0");
 
-        if (currTime < 0.5 && !countdownSFXPlayed)
-        {
-            audioManager.Play("countdownSFXFinal");
-            countdownSFXPlayed = true;
-            currTime = 0;
-            countdownUI.SetActive(false);
+            if (prev != countdownTimer.text && currTime > 0.5)
+            {
+                audioManager.Play("countdownSFX");
+            }
+
+            if (currTime < 0.5 && !countdownSFXPlayed)
+            {
+                audioManager.Play("countdownSFXFinal");
+                countdownSFXPlayed = true;
+                currTime = 0;
+                countdownUI.SetActive(false);
+            }
         }
     }
 
