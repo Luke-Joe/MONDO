@@ -45,13 +45,13 @@ public class CharacterManager : MonoBehaviour
     {
         Character character = characterDB.GetCharacter(index);
         charViewer.material = character.characterMaterial;
+        player.material = characterDB.GetCharacter(index).characterMaterial;
     }
 
     public void Ready()
     {
         if (!PlayerReady)
         {
-            player.material = characterDB.GetCharacter(index).characterMaterial;
             SetupStatus1.text = "CANCEL";
             PlayerReady = true;
             NextButton1.gameObject.SetActive(false);

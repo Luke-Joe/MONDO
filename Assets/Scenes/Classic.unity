@@ -727,6 +727,7 @@ MonoBehaviour:
   SetupStatus1: {fileID: 807905228}
   NextButton1: {fileID: 1846307828}
   PrevButton1: {fileID: 1572929994}
+  index: 0
   PlayerReady: 0
 --- !u!224 &156893682 stripped
 RectTransform:
@@ -803,6 +804,7 @@ MonoBehaviour:
   SetupStatus1: {fileID: 1519648900}
   NextButton1: {fileID: 1320214131}
   PrevButton1: {fileID: 856822581}
+  index: 0
   PlayerReady: 0
 --- !u!1 &219940961
 GameObject:
@@ -21430,6 +21432,7 @@ MonoBehaviour:
   endMenuUI: {fileID: 1022955405}
   countdownUI: {fileID: 2078559444}
   setupUI: {fileID: 666210962}
+  setupManager: {fileID: 666210966}
 --- !u!4 &1489446671
 Transform:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject countdownUI;
     public GameObject setupUI;
     private AudioManager audioManager;
+    public SetupManager setupManager;
 
     private static string p1ScoreKey = "PLAYER1_SCORE";
     private static string p2ScoreKey = "PLAYER2_SCORE";
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         currTime = startingTime;
+        setupManager.ChangeMat();
 
         if (PlayerPrefs.HasKey(p1ScoreKey))
         {

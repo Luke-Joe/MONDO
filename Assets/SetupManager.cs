@@ -17,11 +17,7 @@ public class SetupManager : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
 
-        if (PlayerPrefs.HasKey("P1_SELECTION") && PlayerPrefs.HasKey("P2_SELECTION"))
-        {
-            player1.UpdateCharacter(PlayerPrefs.GetInt("P1_SELECTION"));
-            player2.UpdateCharacter(PlayerPrefs.GetInt("P2_SELECTION"));
-        }
+
     }
 
     void Update()
@@ -33,6 +29,15 @@ public class SetupManager : MonoBehaviour
             PlayerPrefs.SetInt("P2_SELECTION", player2.index);
             setupUI.SetActive(false);
             countdownUI.SetActive(true);
+        }
+    }
+
+    public void ChangeMat()
+    {
+        if (PlayerPrefs.HasKey("P1_SELECTION") && PlayerPrefs.HasKey("P2_SELECTION"))
+        {
+            player1.UpdateCharacter(PlayerPrefs.GetInt("P1_SELECTION"));
+            player2.UpdateCharacter(PlayerPrefs.GetInt("P2_SELECTION"));
         }
     }
 }
