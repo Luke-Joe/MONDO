@@ -49,6 +49,7 @@ public class DamageController : MonoBehaviour
 
     private IEnumerator FlashRoutine()
     {
+        originalMaterial = spriteRenderer.material;
         spriteRenderer.material = flashMaterial;
         spriteRenderer.color = Color.white; // TEMPORARY
         yield return new WaitForSeconds(duration);
