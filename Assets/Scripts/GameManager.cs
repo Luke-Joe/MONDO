@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject endMenuUI;
     public GameObject countdownUI;
     public GameObject setupUI;
+    public GameObject p1;
+    public GameObject p2;
     private AudioManager audioManager;
     public SetupManager setupManager;
 
@@ -126,8 +128,9 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt(setupKey) != 0)
         {
+            p1.SetActive(true);
+            p2.SetActive(true);
             countdownUI.SetActive(true);
-
         }
         else
         {
@@ -139,6 +142,8 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(setupKey) != 0)
         {
+            p1.SetActive(true);
+            p2.SetActive(true);
             currTime -= Time.deltaTime;
             string prev = countdownTimer.text;
             countdownTimer.text = currTime.ToString("0");
