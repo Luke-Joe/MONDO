@@ -18,6 +18,22 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void Mute()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = 0;
+        }
+    }
+
+    public void Unmute()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volume;
+        }
+    }
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);

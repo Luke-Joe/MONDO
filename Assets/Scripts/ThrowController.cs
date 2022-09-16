@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum AttackState
 {
@@ -104,6 +105,13 @@ public class ThrowController : MonoBehaviour
                 {
                     direction.x = -throwJoystick.Horizontal;
                     direction.y = -throwJoystick.Vertical;
+
+                    if (PlayerPrefs.HasKey("CONTROL_STATUS") && Convert.ToBoolean(PlayerPrefs.GetInt("CONTROL_STATUS")))
+                    {
+                        direction.x = throwJoystick.Horizontal;
+                        direction.y = throwJoystick.Vertical;
+                    }
+
                     throwDirection = direction;
                 }
 

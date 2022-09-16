@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,15 @@ public class GameManager : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         currTime = startingTime;
         setupManager.ChangeMat();
+
+        if (PlayerPrefs.HasKey("SFX_STATUS") && !Convert.ToBoolean(PlayerPrefs.GetInt("SFX_STATUS")))
+        {
+            audioManager.Mute();
+        }
+        else
+        {
+            audioManager.Unmute();
+        }
 
         if (PlayerPrefs.HasKey(p1ScoreKey))
         {
