@@ -1070,7 +1070,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480351377
 GameObject:
@@ -1172,7 +1172,7 @@ RectTransform:
   - {fileID: 673369226}
   - {fileID: 2074897081}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1342,61 +1342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673369225}
   m_CullTransparentMesh: 1
---- !u!1 &727165591
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 727165593}
-  - component: {fileID: 727165592}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &727165592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727165591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d3eedda3cb4eb43b005747fe839026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: UIBlip
-    clip: {fileID: 8300000, guid: c49682dc0dec2ad459d5364d575987ad, type: 3}
-    volume: 0.5
-    pitch: 1
-    source: {fileID: 0}
-  - name: UICancel
-    clip: {fileID: 8300000, guid: 34416b96c8642ad45b908242ddaf08bb, type: 3}
-    volume: 0.5
-    pitch: 1
-    source: {fileID: 0}
---- !u!4 &727165593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727165591}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 615.82245, y: 1097.0277, z: -11.58405}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &809909231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1525,6 +1470,136 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1828843570161381839, guid: a45b85eeb9f846848b5b4edadaa22240, type: 3}
   m_PrefabInstance: {fileID: 809909231}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &829758910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829758912}
+  - component: {fileID: 829758911}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &829758911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829758910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d3eedda3cb4eb43b005747fe839026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: HitSound
+    clip: {fileID: 8300000, guid: 21cb9387481515a4c9da9063ca829f41, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MaxCharge
+    clip: {fileID: 8300000, guid: 8b893eefb65a0414e867550cc29e36b9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Flash
+    clip: {fileID: 8300000, guid: 791c4caa9dca3af4cad498ae6ebc0640, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: HitOther
+    clip: {fileID: 8300000, guid: 1879e2a40d867a744b07e4fb5e23dc88, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: CleaverShoot
+    clip: {fileID: 8300000, guid: 25a065bb340ca194ab2dbc4321576ae0, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+  - name: CleaverFall
+    clip: {fileID: 8300000, guid: b83dad0ad110e614fa8a99c60db24dbd, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: ChargeThrow
+    clip: {fileID: 8300000, guid: 8bb7946032d970e4dbe4e85cc2805560, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: RegularThrow
+    clip: {fileID: 8300000, guid: f9ea03f4b54fc2b4a83848bd093aba7a, type: 3}
+    volume: 0.5
+    pitch: 0.75
+    source: {fileID: 0}
+  - name: Step
+    clip: {fileID: 8300000, guid: c96e22cddfd1a2f4599597ba2cf9213e, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Step2
+    clip: {fileID: 8300000, guid: 6dd2cac9764d8404899fe1bf4e6edc81, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Charging
+    clip: {fileID: 8300000, guid: 0466783b042be4148b4493aa0fc32401, type: 3}
+    volume: 0.25
+    pitch: 0.75
+    source: {fileID: 0}
+  - name: DeathFall
+    clip: {fileID: 8300000, guid: ecada3cbe5b2959429a0795d5eb89e1e, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: UIBlip
+    clip: {fileID: 8300000, guid: c49682dc0dec2ad459d5364d575987ad, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: UICancel
+    clip: {fileID: 8300000, guid: 34416b96c8642ad45b908242ddaf08bb, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: countdownSFX
+    clip: {fileID: 8300000, guid: dbb0683d92965ac48964900eaf3c74eb, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: countdownSFXFinal
+    clip: {fileID: 8300000, guid: 60a06937993b95a4d997b8cf9ad4cb4e, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 0f74f59b433506040b946bddde3ea1aa, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &829758912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829758910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5119175, y: -0.90300626, z: -0.00081490376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035668882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1871,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588957432
 GameObject:

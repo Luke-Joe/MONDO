@@ -97,6 +97,8 @@ public class SettingsMenu : MonoBehaviour
         if (musicActive)
         {
             am.Play("UICancel");
+            am.MuteTheme();
+            am.StopPlaying("Theme");
             musicToggle.sprite = soundOff;
             musicActive = false;
             PlayerPrefs.SetInt(musicPP, 0);
@@ -104,6 +106,8 @@ public class SettingsMenu : MonoBehaviour
         else
         {
             am.Play("UIBlip");
+            am.UnmuteTheme();
+            am.Play("Theme");
             musicToggle.sprite = soundOn;
             musicActive = true;
             PlayerPrefs.SetInt(musicPP, 1);
