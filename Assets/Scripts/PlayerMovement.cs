@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 direction;
 
     private Animator animator;
+    private Health health;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+        if (!health.isDead)
+        {
+            rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+        }
     }
 }
