@@ -23,6 +23,7 @@ public class ThrowController : MonoBehaviour
     private Rigidbody2D rb;
     private AttackState state;
     private Animator animator;
+    private Health health;
 
     public GameObject pointPrefab;
     public GameObject[] points;
@@ -45,6 +46,7 @@ public class ThrowController : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        health = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
         state = AttackState.ready;
         animator = GetComponentInChildren<Animator>();
@@ -137,6 +139,17 @@ public class ThrowController : MonoBehaviour
                     audioManager.Play("MaxCharge");
                     maxCharge = true;
                 }
+
+                if (health.isDead)
+                {
+                    state = AttackState.cooldown;
+                    audioManager.StopPlaying("Charging");
+                    for (int i = 0; i < points.Length; i++)
+                    {
+                        points[i].SetActive(false);
+                    }
+                }
+
                 //TODO: Ability to cancel attack
                 if (throwJoystick.Horizontal == 0 && throwJoystick.Vertical == 0)
                 {
