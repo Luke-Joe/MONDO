@@ -16,8 +16,6 @@ public class SetupManager : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-
-
     }
 
     void Update()
