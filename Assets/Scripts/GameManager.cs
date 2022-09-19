@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
     private AudioManager audioManager;
+    private Ads ads;
     public SetupManager setupManager;
 
     private static string p1ScoreKey = "PLAYER1_SCORE";
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        ads = GetComponent<Ads>();
         currTime = startingTime;
         setupManager.ChangeMat();
 
@@ -167,6 +169,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
 
+        ads.UpdateLoad();
         if (!roundEnded)
         {
             Time.timeScale = 0;
