@@ -1,6 +1,6 @@
 # MONDO
 
-This Unity-based dodgeball game is designed for two players to play on a single device. The project is available [here]([url](https://play.google.com/store/apps/details?id=com.TemosGames.MondoDodgeball&hl=en&gl=US)). 
+This Unity-based dodgeball game is designed for two players to play on a single device. The project is available on the Google Play Store for Android devices. 
 
 Additional Features:
 - Unity Ads Integration: Implemented Unity Ads to display non-intrusive, video ads within the game at set intervals.
